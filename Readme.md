@@ -3,4 +3,5 @@
 
 ## Getting Started
 <br>
-## Installing [voice2json](http://voice2json.org).
+
+### Installing [voice2json](http://voice2json.org)
