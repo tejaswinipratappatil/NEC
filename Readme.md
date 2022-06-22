@@ -119,3 +119,36 @@ If you are building from source on macOS, you will also need to install coreutil
 ```
 $ brew install coreutils
 ```
+
+  <br>
+
+### Package Installations and Enviornment Setup
+  
+```
+apt update
+apt install sudo
+sudo apt install software-properties-common
+sudo apt install python3.7
+sudo apt install gcc
+apt install curl
+sudo apt-get install libatlas-base-dev liblapack-dev libblas-dev
+apt install make
+sudo apt install swig
+apt-get install python3-venv
+sudo rm /usr/bin/python3 #remove existing link
+sudo ln /usr/bin/python3.7 /usr/bin/python3
+```
+```
+apt install git
+sudo apt-get install python3.7-dev
+apt-get install vim
+```
+  
+<br>
+  
+### Training the model
+
+* We add our sentences in sentences.ini file
+* Train the profile using "voice2json train-profile" command.
+* We can check the path for sentence.ini file using "voice2json print-files" command
+* After training if some words from sentence.ini files are not there then we neeed to add them in custom_words.txt file  
