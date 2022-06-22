@@ -152,3 +152,86 @@ apt-get install vim
 * Train the profile using "voice2json train-profile" command.
 * We can check the path for sentence.ini file using "voice2json print-files" command
 * After training if some words from sentence.ini files are not there then we neeed to add them in custom_words.txt file  
+  
+  <br>
+  
+### Post Installation
+  
+#### Download Profile
+  
+```voice2json``` must have a profile in order to do speech/intent recognition. Because the artifacts for each language/locale can be quite large (100’s of MB or more), ```voice2json``` does not include them in its [Debian package](http://voice2json.org/install.html#debian-package), [Docker image](http://voice2json.org/install.html#docker-image), or [source repository](http://voice2json.org/install.html#from-source).
+
+To download artifacts for a specific profile or language, use:
+```
+$ voice2json --debug --profile <PROFILE> download-profile
+```
+where ```<PROFILE>``` is one of the [supported languages](http://voice2json.org/#supported-languages) (like en or fr), or one of the [known profile](https://github.com/synesthesiam/voice2json/tree/master/etc/profiles) names like ```de_kaldi-zamia```.
+
+Note: The post-download process may take a long time, especially on Raspberry Pi (SD card). This is because ```voice2json``` is decompressing and re-combining split files from [GitHub](https://github.com/synesthesiam/voice2json-profiles).
+
+Once everything is downloaded (by default in ```$HOME/.local/share/voice2json```), you should be able to train your profile:
+```
+$ voice2json --debug --profile <PROFILE> train-profile
+```
+If you manually download or move files to the ```$HOME/.config/voice2json directory```, you may omit the ```--profile``` argument to ```voice2json```.
+
+#### Test Your Profile
+  
+Once you’ve trained your profile, you can quickly test it out with:
+```
+$ voice2json --profile <PROFILE> transcribe-stream
+```  
+The ```transcribe-stream``` will record from your microphone (using ```arecord``` and the default device), wait for you to speak a voice command, and then output a transcription (hit CTRL + C to exit).
+
+If you’re using the default English sentences, try saying “turn on the living room lamp” and wait for the output. Getting intents out is as easy as:
+```
+$ voice2json --profile <PROFILE> transcribe-stream | \
+    voice2json --profile <PROFILE> recognize-intent 
+```  
+Speaking a voice command should now output a line of JSON with the recognized intent. For example, “what time is it” outputs something like:
+```
+{
+  "text": "what time is it",
+  "likelihood": 0.025608657540496446,
+  "transcribe_seconds": 1.4270143630001257,
+  "wav_seconds": 0.0043125,
+  "tokens": [
+    "what",
+    "time",
+    "is",
+    "it"
+  ],
+  "timeout": false,
+  "intent": {
+    "name": "GetTime",
+    "confidence": 1
+  },
+  "entities": [],
+  "raw_text": "what time is it",
+  "recognize_seconds": 0.00019677899945236277,
+  "raw_tokens": [
+    "what",
+    "time",
+    "is",
+    "it"
+  ],
+  "speech_confidence": null,
+  "wav_name": null,
+  "slots": {}
+}
+```
+  
+<br>
+  
+#### Back Up Your Profile
+  
+If you have an existing ```voice2json``` profile, it is highly recommended you regularly back up the following files:
+
+* ```sentences.ini``` - your custom voice commands
+* ```custom_words.txt``` - your custom pronunciations
+* ```profile.yml``` - your custom settings
+* ```slots``` - directory with custom slot values
+* ```slot_programs``` - directory with custom slot programs
+* ```converters``` - directory with custom conversion programs
+  
+See the ```print-files``` for an easy way to automate backups.  
