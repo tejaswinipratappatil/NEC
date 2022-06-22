@@ -5,7 +5,7 @@
 <br>
 
 ### Installing [voice2json](http://voice2json.org)
-Voice2json has been tested on [Ubuntu 18.04](https://releases.ubuntu.com/18.04/), the newer versions of Ubuntu does not support the packages involved.
+Voice2json has been tested on Python 3.7 and [Ubuntu 18.04](https://releases.ubuntu.com/18.04/).
 
 There are three different options to install voice2json:
 * [Debian Package](http://voice2json.org/install.html#debian-package)
@@ -110,6 +110,10 @@ $ make
 $ make install
 ```
 This will install ```voice2json``` inside a virtual environment at ```$PWD/.venv``` by default with all of the supported speech to text engines and supporting tools. When installation is finished, copy ```voice2json.sh``` somewhere in your ```PATH``` and rename it to ```voice2json```.
+  
+If voice2json in ```PATH``` is not executable then run the following command to make it executable :
+  
+  ```chmod +x /path/to/voice2json```
 
 If you are building from source on macOS, you will also need to install coreutils:
 ```
