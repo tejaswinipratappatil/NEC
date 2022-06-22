@@ -7,6 +7,11 @@
 ### Installing [voice2json](http://voice2json.org)
 Voice2json has been tested on Python 3.7 and [Ubuntu 18.04](https://releases.ubuntu.com/18.04/).
 
+#### Pre-requisite
+* [Ubuntu 18.04](https://releases.ubuntu.com/18.04/)
+* [Python 3.7](https://www.python.org/downloads/release/python-370/)
+
+
 There are three different options to install voice2json:
 * [Debian Package](http://voice2json.org/install.html#debian-package)
 * [Docker Image](http://voice2json.org/install.html#docker-image)
