@@ -171,6 +171,11 @@ To download artifacts for a specific profile or language, use:
 $ voice2json --debug --profile <PROFILE> download-profile
 ```
 where ```<PROFILE>``` is one of the [supported languages](http://voice2json.org/#supported-languages) (like en or fr), or one of the [known profile](https://github.com/synesthesiam/voice2json/tree/master/etc/profiles) names like ```de_kaldi-zamia```.
+  
+####  Example for download a profile "en-us_kaldi-zamia"
+```
+  $ voice2json --profile  en-us_kaldi-zamia download-profile
+```
 
 Note: The post-download process may take a long time, especially on Raspberry Pi (SD card). This is because ```voice2json``` is decompressing and re-combining split files from [GitHub](https://github.com/synesthesiam/voice2json-profiles).
 
