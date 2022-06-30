@@ -245,3 +245,13 @@ If you have an existing ```voice2json``` profile, it is highly recommended you r
 * ```converters``` - directory with custom conversion programs
   
 See the ```print-files``` for an easy way to automate backups.  
+
+
+#### To Run Python Script:
+After sucessfully installation of voice2json need to run python script.
+To run python script need to run following command
+python3 transcribestream.py
+
+It will print "Press space to start".  After pressing the space bar, It will start the listing command. 
+Speak the command that you need to convert to json. After that It will open file to get the json and close it after some time. 
+After closing the file it will again the print  "Press space to start". So it will continous listen the voice commands.
