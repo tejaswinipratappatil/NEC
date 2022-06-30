@@ -250,7 +250,8 @@ See the ```print-files``` for an easy way to automate backups.
 #### To Run Python Script:
 After sucessfully installation of voice2json need to run python script.
 To run python script need to run following command
-python3 transcribestream.py
+``` $ python3 transcribestream.py
+```
 
 It will print "Press space to start".  After pressing the space bar, It will start the listing command. 
 Speak the command that you need to convert to json. After that It will open file to get the json and close it after some time. 
